@@ -1,1 +1,1 @@
-# CMPUT404 Lab
+# CMPUT404 Lab Collection
