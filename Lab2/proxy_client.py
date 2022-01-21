@@ -2,10 +2,10 @@ import socket
 import sys
 
 
-HOST = 'www.google.com'
+HOST = ''
 PORT = 8001
 BUFFER_SIZE = 1024
-payload = f'GET / HTTP/1.0\r\nHost: {HOST}\r\n\r\n'
+payload = f'GET / HTTP/1.0\r\nHost: www.google.com\r\n\r\n'
 
 
 def connect(address):

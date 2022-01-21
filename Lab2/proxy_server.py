@@ -1,5 +1,5 @@
+#!/usr/bin/env python3
 import socket
-import sys
 import time
 
 # define address & buffer size
@@ -35,17 +35,20 @@ def main():
 
         # continuously listen for connections
         while True:
-            conn, address = proxy_s.accept()
-            print("Connected by", address)
-
-            # Connecting to Google
+            #connect proxy start
+            conn, addr = proxy_s.accept()
+            print("Connect by", addr)
             with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as proxy_e:
+                print("Connecting to Google")
                 ip = remote_ip(host)
+
+                #connect proxy_end
                 proxy_e.connect((ip, port))
 
-                # receive data and send it to google
-                full_data = conn.recv(BUFFER_SIZE)
-                conn.sendall(full_data)
+                #send data
+                send_full_data = conn.recv(BUFFER_SIZE)
+                print(f'Sendinf recieved data {send_full_data} to Google')
+                proxy_e.sendall(send_full_data)
 
                 # Shut down
                 proxy_e.shutdown(socket.SHUT_WR)
